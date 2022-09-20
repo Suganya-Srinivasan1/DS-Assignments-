@@ -1,0 +1,66 @@
+def register(user_name,pass_word):
+    spsymbol = ['#','%','$']
+    if user_name[0].isalpha():
+        if ("@" in user_name) and (user_name.count("@") == 1):
+            if (user_name[-4] == ".") ^ (user_name[-3] == "."):
+                print ("user name is right")
+                if (len(pass_word) > 5) and (len(pass_word) < 16):
+                    if any(char.isnumeric() for char in pass_word):
+                        if any(char.islower() for char in pass_word):
+                            if any(char.isupper() for char in pass_word):
+                                if any(char in spsymbol for char in pass_word):
+                                    print("Password name is right")
+                                    msg = "True"
+                                    return(msg)
+                                else:
+                                    print("Invalid password : Expected one special symbol '@,#,$'")
+                            else:
+                                print("Invalid password : Expected one Upper case alpha")
+                        else:
+                            print("Invalid password : Expected one Lower case alpha")
+                    else:
+                        print("Invalid password : Expected one number")
+                else:
+                    print("Invalid password : 5 < Password length > 16")
+            else:
+                print ("Invalid user name")
+        else:
+            print ("Invalid user name")
+    else:
+        print ("Invalid user name")
+    msg = "False"
+    return(msg)
+
+
+choose = input("Register or Login: ")
+User_db = open (r"C:\Users\Admin\Desktop\Data science\Python\Module1\User_db.txt", "a")
+msg = "False"
+if choose == "Register" :
+    while msg == "False":
+        user_name = input("Enter user name: ")
+        pass_word = input("Enter password: ")
+        msg = register(user_name,pass_word)  
+    User_db.write(str(user_name) + " " + str(pass_word) + "\n")  
+elif choose == 'Login' :
+     for i in open("C:\Users\Admin\Desktop\Data science\Python\Module1\User_db.txt", "r").readlines():
+	validate = i.split()
+	if (user_name = validate[0])
+	    if (pass_word = validate[1])
+		print ("Correct credentials")
+            else:
+		choose1 = input("Forgot password(A) or Create new password(B): ")
+                if choose1 = B:
+                   pass_word = input("Enter new password: ")
+                   
+		elif choose1 = A:
+		   pass_word = input("Enter password: ") 
+	else:
+	    print ("Incorrect user name")
+	
+else:
+    print ("Invalid option")
+
+
+User_db.close()
+
+
