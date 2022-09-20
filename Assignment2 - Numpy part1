@@ -1,0 +1,87 @@
+import numpy as np
+print(np.__version__)
+print(np.show_config())
+a = np.zeros(10) 	- create null vector of size 10
+print(a.size * a.itemsize) - memory size of any array 	
+print(np.info(np.add)) - get the documentation of the numpy add function from the command line
+*Create a null vector of size 10 but the fifth value which is 1
+b = np.zeros(10)
+b[4] = 1
+print(b) 
+*Create a vector with values ranging from 10 to 49
+c = np.arange(10,49) 	
+*Reverse array
+d = np.array([10,20,30])
+reverse_d = d[::-1]
+print(reverse_d)
+*3x3 matrix with values ranging from 0 to 8 
+e = np.arange(0,9).reshape(3,3)
+print(e)
+*Find indices of non-zero elements from [1,2,0,0,4,0]
+f = np.array([1,2,0,0,4,0])
+ind_f = np.nonzero(f)
+print(ind_f)
+*Create a 3x3 identity matrix
+g = np.eye(3,3)
+print(g)
+*Create a 3x3x3 array with random values
+h = np.random.random((3,3,3))
+print(h)
+*Create a 10x10 array with random values and find the minimum and maximum values
+i = np.random.random((10,10))
+min_i = np.min(i)
+max_i = np.max(i)
+print(min_i)
+print(max_i)
+*Create a random vector of size 30 and find the mean value
+j = np.random.random((30))
+mean_j = np.mean(j)
+print(mean_j)
+*Create a 2d array with 1 on the border and 0 inside 
+k = np.ones((3,3))
+k[1:-1,1:-1] = 0
+print(k)
+*How to add a border (filled with 0's) around an existing array?
+l = np.ones((3,3))
+m = np.pad(l,pad_width=1,constant_values=0)
+print(m)
+*What is the result of the following expression? 
+0 * np.nan  -> nan
+np.nan == np.nan -> False
+np.inf > np.nan -> False
+np.nan - np.nan -> nan
+0.3 == 3 * 0.1 -> False
+*Create a 5x5 matrix with values 1,2,3,4 just below the diagonal
+n = np.diag([1,2,3,4],k=-1)
+print(n)
+*Create a 8x8 matrix and fill it with a checkerboard pattern  
+o = np.zeros((8,8))
+o[1::2,::2] = 1
+o[::2,1::2] = 1
+print(o)
+*Consider a (6,7,8) shape array, what is the index (x,y,z) of the 100th element?
+import numpy as np
+p=np.unravel_index(99,(6,7,8))
+print(p)	
+*Create a checkerboard 8x8 matrix using the tile function
+q = np.tile(np.array([[0,1],[1,0]]),(4,4))
+print(q)
+*Normalize a 5x5 random matrix 
+r = np.random.random((5,5))
+rmin,rmax=r.min(),r.max()
+r=(r-rmin)/(rmax-rmin)
+print(r)
+* Create a custom dtype that describes a color as four unsigned bytes (RGBA) 
+RGBA = np.dtype([('red',np.uint8),('blue',np.uint8),('green',np.uint8),('alpha',np.uint8)])
+color = np.array((1,2,3,4),dtype = RGBA)
+*Multiply a 5x3 matrix by a 3x2 matrix (real matrix product)
+s1 = np.array((5,3))
+s2 = np.array((3,2))
+s3 = s1 @ s2
+print(s3)
+*Given a 1D array, negate all elements which are between 3 and 8, in place
+t = np.arange(16)
+t[(t>=3) & (t<=8)] *= (-1)
+print(t)
+
+ 	
